@@ -1,5 +1,6 @@
 const service = require('../services/mainService');
 
+//dummy result for test1
 const testResultTest1 = {
     "topScorer": [
         {
@@ -27,6 +28,7 @@ describe("getTopScorerAndWicktestakerTest1",()=>{
     })
 })
 
+//checking invalid team id input case
 describe("getTopScorerAndWicktestakerTest2",()=>{
     test("Should return null in case team id is not present", ()=>{
         expect(service.getTopScorerAndWicktestaker(9)).toBe(null);
@@ -34,11 +36,13 @@ describe("getTopScorerAndWicktestakerTest2",()=>{
 })
 
 // for getTeamData function in service
+// dummy input for test 3
 const inputDataTest3 = {
     "teamId": 1,
     "teamName": "RCB",
     "playersList": [1,7]
 }
+//dummy result for test3
 const testResultTest3 = {
     "teamId": 1,
     "teamName": "RCB",
@@ -59,6 +63,7 @@ const testResultTest3 = {
         }
     ]
 }
+// get team object as input and return team object with players data added from player id
 describe("getTeamDataTest3",()=>{
     test("Should return team data with players added in playerlist",()=>{
         expect(service.getTeamData(inputDataTest3)).toStrictEqual(testResultTest3);

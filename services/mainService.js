@@ -1,8 +1,9 @@
+// model imports
 const Player = require('../models/player')
 const Team = require('../models/team');
 const Match = require('../models/match')
 
-exports.getTopScorerAndWicktestaker = (teamId) => {
+exports.getTopScorerAndWicktestaker = (teamId) => { // get top scorer and wicket taker from team id
     let topScorer;
     let topWicketTaker;
     let team = Team.getTeamFromId(teamId);
@@ -12,7 +13,7 @@ exports.getTopScorerAndWicktestaker = (teamId) => {
     team = this.getTeamData(team);
     let topScore = -Infinity;
     let topWickets = -Infinity;
-    team.playersList.forEach(player => {
+    team.playersList.forEach(player => { // logic to identify top score and top wicket taken in a team
         if (player.runs >= topScore) {
             topScore = player.runs;
         }
@@ -20,11 +21,11 @@ exports.getTopScorerAndWicktestaker = (teamId) => {
             topWickets = player.wickets;
         }
     });
-    [topScorer,topWicketTaker] = getPlayer(topScore,topWickets,team.playersList);
+    [topScorer,topWicketTaker] = getPlayer(topScore,topWickets,team.playersList); // get players array based on the top score and wickets calculated earlier
     return {topScorer,topWicketTaker};
 }
 
-function getPlayer(topScore,topWickets,list){
+function getPlayer(topScore,topWickets,list){ // find out top score and top runs scoring players
     let resultArrScore = [];
     let resultArrWicket = [];
     list.forEach(p => {
@@ -38,7 +39,7 @@ function getPlayer(topScore,topWickets,list){
     return [resultArrScore,resultArrWicket];
 }
 
-exports.getTeamData = (team) => {
+exports.getTeamData = (team) => { // get players data from playerslist in team data and add it to team data
     if(!team){
         return null;
     }
@@ -50,7 +51,7 @@ exports.getTeamData = (team) => {
     return team;
 }
 
-exports.getMatchesOnDate = (date)=>{
+exports.getMatchesOnDate = (date)=>{ // compare date and return matches result
    let matchList = Match.getAllMatches();
    return matchList.filter(m => m.matchDate === date)
 }

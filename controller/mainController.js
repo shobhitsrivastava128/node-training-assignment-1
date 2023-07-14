@@ -2,6 +2,8 @@ const Player = require('../models/player');
 const Team = require('../models/team');
 const Match = require('../models/match');
 const service = require('../services/mainService');
+
+// status codes and response msg import
 const {RESPONSE_MSG,STATUS_CODE} = require('../constants/response');
 
 const addPlayer = (req, res) => {
@@ -24,7 +26,6 @@ const addTeam = (req, res) => {
 
 const getAllTeams = (req, res) => {
     let teamsArr = Team.getAllTeams();
-    console.log(teamsArr,'asd');
     teamsArr.forEach(team => {
         team = service.getTeamData(team)
     });
@@ -60,6 +61,7 @@ const getMatchesOnDate = (req, res) => {
     res.status(STATUS_CODE.SUCCESS).json(service.getMatchesOnDate(date));
 }
 
+// exporting controller
 module.exports.addPlayer = addPlayer;
 module.exports.getAllPlayers = getAllPlayers;
 module.exports.addTeam = addTeam;

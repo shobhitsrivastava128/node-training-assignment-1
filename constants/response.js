@@ -1,3 +1,4 @@
+//response msg constants
 module.exports.RESPONSE_MSG = {
     PLAYER_ADDED_SUCCESS : "Player added successfully",
     TEAM_ADDED_SUCCESS : "Team added successfully",
@@ -6,6 +7,7 @@ module.exports.RESPONSE_MSG = {
 
 }
 
+//status code constants
 module.exports.STATUS_CODE = {
     SUCCESS : 200
 }
