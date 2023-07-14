@@ -15,12 +15,11 @@ class Player{
     }
 
     static getAllPlayers(){
-        return playerList;
+        return JSON.parse(JSON.stringify(playerList));
     }
 
     static getPlayerFromId(id){
-       let result = playerList.find(p=>p.id === id);
-       return result;
+       return JSON.parse(JSON.stringify(playerList.find(p=>p.id === id)));
     }
 }
 

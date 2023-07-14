@@ -1,1 +1,0 @@
-export const NO_DATA_FOUND_MSG_TEAM = ""

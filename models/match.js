@@ -14,7 +14,7 @@ class Match{
     }
 
     static getAllMatches(){
-        return matches;
+        return JSON.parse(JSON.stringify(matches));
     }
 }
 
